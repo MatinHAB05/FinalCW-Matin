@@ -68,8 +68,11 @@ Matin/Modem
 \end{itemize}
 
 \subsection{Memory profiling}
+\subsubsection{Memory Leak}
+
 This definition occurs when the programmer allocates a memory but does not use it (for any reason, such as forgetfulness, mistakes, incompleteness, or even laziness) and obviously This memory will be involved until it disappears, and the point is that we may no longer need what we allocated, and this means reducing the amount of available memory while running the program.And that means slowing down the execution of the program or even exiting the execution of the program (yes)
-\newline reasons :
+\newpage
+ reasons :
 \begin{itemize}
   \item Not calling for free
   \item Jumping (losing) the address where you allocated memory (and this means that even if we want to delete, we don't know where we saved the memory to delete it, example code:)\newline
@@ -92,31 +95,56 @@ This definition occurs when the programmer allocates a memory but does not use i
 
 \end{itemize}
 
-
-
-
-
-
-\subsubsection{Memory Leak}
-
-
 \subsubsection{Memory profilers}
+A tool that can be used to show the memory error that is due to access to the heap memory, the type of error and the location of the error in the C or C++ code.
+And it helps in finding the bug codes in this type of error, which means saving time and effort...\newline
+And this program can be run in Linux!\newline
+It clarifies the errors for us and with its help we can fix these errors more easily
+\texttt{ memory leaks, reading uninitialized memory, accessing unallocated memory, and array out-of-bounds}
+.And with the help of the information that the program gives us, a code error occurs (or at least we understand that we have a memory problem).
+\begin{lstlisting}
+heap:
+? allocs, ? free bytes allocated
+leaks:
+? bytes in ? blocks
+And...
+\end{lstlisting}
+This information can be found in the leak section especially if there is a problem or not.
 
-
+\newpage
 \subsection{GNU/Linux Bash Scripting}
 
 
 \subsubsection{fzf}
+\begin{itemize}
+  \item What is fuzzy searching?\newline
+  It is a search algorithm, the purpose of this algorithm is if we are looking for an article and we know only one article that includes that discussion.
+Or even if we only know the name of the topic or know anything related to it, this operation will be executed at the time of searching with the help of this algorithm.
+The good thing about this algorithm is that it ranks based on the number of matches of our search with the database it has and lists and displays them in order of priority.
+And he can even tell if this is what you meant according to the database he has, that is, he can correct it if there is a mistake.
+\item what the following command does: \texttt{ls | fzf}\newline
+It pins the list of directories created by \texttt{ls} and produces a mode, one can select the desired directory by scrolling up and down and enter it.
+\end{itemize}
 
 
 
 \subsubsection{Using fzf to find your favorite PDF}
-
+\texttt{fd -e pdf \{finds all files of this type\}}\newline
+\texttt{fzf --query="???" \{all files whose name has "???"\}}\newline
+So, after piping, we will have a series of PDF files named \texttt{???} They are in themselves\newline
+\texttt{fd-e pdf | fzf --query="???"}
 
 
 \subsubsection{Opening the file using Zathura}
-
+\texttt{zathura "\$(fd -e pdf | fzf --query="???")"} \newline
+As mentioned, the command written in parentheses opens a list to select the desired file and we select it by up and down, but actually we enter that directory and the PDF file does not open.
+To open it, we can use the above command, and in fact, it will open the PDF file in the directory we give it.
+\newline
+In a way, it can be said that we hit another pipe...
+\newline
+\texttt{zathura PATH\_PDF or zathura NAMEPDF.pdf}
 \section{Git and FOSS}
+
 \subsubsection{README.md}
 
 \subsection{Issues}
