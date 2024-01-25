@@ -2,6 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
+\usepackage{listings}
 \geometry{a4paper, margin=1in}
 \usepackage{graphicx}
 \usepackage{hyperref}
@@ -67,7 +68,35 @@ Matin/Modem
 \end{itemize}
 
 \subsection{Memory profiling}
+This definition occurs when the programmer allocates a memory but does not use it (for any reason, such as forgetfulness, mistakes, incompleteness, or even laziness) and obviously
+This memory will be involved until it disappears, and the point is that we may no longer need what we allocated, and this means reducing the amount of available memory while running the program.
+And that means slowing down the execution of the program or even exiting the execution of the program (yes)
+\newline reasons :
+Not calling for free
+\newline
+Jumping (losing) the address where you allocated memory (and this means that even if we want to delete, we don't know where we saved the memory to delete it, example code:)\newline
+\begin{lstlisting}
+  int *ptr=(int * )malloc(sizeof(int)) ;
+  int x=5;
+  ptr=&x;
+  free(????) ;
+  \end{lstlisting}
+  \newline
 
+
+We do not put the conditioning of the fairy and it in the general state (for example:)\newline
+\begin{lstlisting}
+  int *ptr=(int * )malloc(sinzeof(int)) ;
+  int x ;
+  scanf("%d",&x) ;
+  if(x%2==0){printf("E") ; free(ptr) ;}
+  if(x%2==1){printf("O") ; }
+  \end{lstlisting}
+  \newline
+
+
+If you exit or exit the program while the program is running and the Fairy part has not yet run, it is possible that the memory will not be freed and it will produce a story in the next run and it will become unstable.
+\newline
 
 \subsubsection{Memory Leak}
 
